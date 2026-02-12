@@ -1,0 +1,12 @@
+## Title: |cffffd700SMSM|r |cff949ebfUI|r
+## Notes: SMSMUI
+## Author: rootkit1337
+## Version: 20260210.01
+## SavedVariables: SMSMDB
+## OptionalDeps: ElvUI
+## Interface: 11508
+## X-Wago-ID: n6VPvLGd
+
+embeds.xml
+
+Game\Vanilla\!load.xml

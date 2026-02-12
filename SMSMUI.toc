@@ -1,0 +1,26 @@
+## Title: |cffffd700SMSM|r |cff949ebfUI|r
+## Notes: SMSMUI
+## Author: SMSM
+## Version: 20260210.01
+## SavedVariables: SMSMDB, NEPHUIDB
+## OptionalDeps: ElvUI
+## Interface: 120000, 50503, 20505
+## X-Wago-ID: n6VPvLGd
+## AddonCompartmentFunc: SMSMUI_AddonCompartmentFunc
+## IconTexture: Interface\AddOns\SMSMUI\Game\Shared\Media\Textures\LogoAddon
+## Category-enUS: User Interface
+## Category-deDE: Benutzerinterface
+## Category-esES: Interfaz de usuario
+## Category-esMX: Interfaz de usuario
+## Category-frFR: Interface utilisateur
+## Category-itIT: Interfaccia utente
+## Category-koKR: 사용자 인터페이스
+## Category-ptBR: Interface do usuário
+## Category-ruRU: Интерфейс пользователя
+## Category-zhCN: 用户界面
+## Category-zhTW: 使用者介面
+## Group: SMSMUI
+
+embeds.xml
+
+Game\[Game]\!load.xml

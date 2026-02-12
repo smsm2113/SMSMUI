@@ -1,0 +1,59 @@
+local SMSMUI = unpack(SMSMUI)
+
+local tonumber, ipairs, unpack = tonumber, ipairs, unpack
+local format = format
+
+local DisableAddOn = C_AddOns.DisableAddOn
+
+SMSMUI.title = format("|cffffd700SMSM|r |cff949ebfUI|r")
+SMSMUI.version = tonumber(C_AddOns.GetAddOnMetadata("SMSMUI", "Version"))
+SMSMUI.myname = UnitName("player")
+
+function SMSMUI:Initialize()
+    local Details = Details
+    local E
+    local addons = {
+        "SMSMUI_Installer",
+        "SharedMedia_SMSM"
+    }
+
+    if self:IsAddOnEnabled("Details") then
+        if Details.is_first_run and #Details.custom == 0 then
+            Details:AddDefaultCustomDisplays()
+        end
+
+        Details.character_first_run = false
+        Details.is_first_run = false
+        Details.is_version_first_run = false
+    end
+
+    if self:IsAddOnEnabled("ElvUI") then
+        E = unpack(ElvUI)
+
+        if E.InstallFrame and E.InstallFrame:IsShown() then
+            E.InstallFrame:Hide()
+
+            E.private.install_complete = E.version
+        end
+
+        E.global.ignoreIncompatible = true
+    end
+
+    if self.db.global.profiles and not self.db.char.loaded and not InCombatLockdown() then
+        StaticPopupDialogs["LoadProfiles"] = {
+            text = "Do you wish to load your installed profiles onto this character?",
+            button1 = "Yes",
+            button2 = "No",
+            OnAccept = function() self:LoadProfiles() end,
+            OnCancel = function() self.db.char.loaded = true end
+        }
+
+        StaticPopup_Show("LoadProfiles")
+    end
+
+    for _, v in ipairs(addons) do
+        if self:IsAddOnEnabled(v) then
+            DisableAddOn(v)
+        end
+    end
+end
